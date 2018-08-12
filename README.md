@@ -37,9 +37,24 @@ Encryption is a tool we use when communicating, at it's core it allows us to det
 
 Now in the world of pathfinder we won't have access to powerful computers, in fact we will have a complete lack of even moderate computational power. As such encrypting everyday communications between thousands of NPCs is probably not going to work, so instead we'll be focusing on encrypting infrequent and highly sensitive messages between powerful and/or wealthy characters. I think it's pretty reasonable to assume that there are some people who would jump at the chance to have their communications sent with the knowledge that only their intended recipient will be able to read them.
 
-As for how encryption works, at it's most basic level you have a message known as the `plaintext` and an algorithm to encrypt it called the `cipher`. You apply the cipher to the plaintext to create the encrypted message called the `ciphertext`, you send the ciphertext to your recipient and they use another algorithm to decrypt it back into the plaintext. In order to stop anyone else from decrypting the ciphertext the cipher uses a secret `key` which the sender knows, the algorithm to decrypt the message requires the same key to work, essentially the sender and reciever have a shared secret which allows them to securely send messages to each other.
+As for how encryption works, at it's most basic level you have a message known as the `plaintext` and an algorithm to encrypt it called the `cipher`. You apply the `cipher` to the `plaintext` to create the encrypted message called the `ciphertext`, you send the `ciphertext` to your recipient and they use another algorithm to decrypt it back into the `plaintext`. In order to stop anyone else from decrypting the `ciphertext` the `cipher` uses a secret `key` which the sender knows, the algorithm to decrypt the message requires the same `key` to work, essentially the sender and receiver have a shared secret which allows them to securely send messages to each other.
 
 ## Key exchange
+
+So we need to share a `key` between the sender and receiver, how can we do that securely without an adversary being able to figure out what it is? In general we like to assume that any and all messages we send can be intercepted by people they're not intended for. We can't use encryption to secure the message in which we send the `key` because that would require a `key` to encrypt the message in which we send it... :/
+
+Fortunately for us we can utilise Diffie-Hellman key exchange, a tried and tested method for securely sharing secrets between two parties.
+
+It's easiest to explain this by using an example, classically using agents names Alice and Bob. Alice and Bob want to send encrypted messages to each other, in order to do so they need a shared secret.
+
+- First Alice and Bob choose a `common key`, it doesn't matter if other people know this so they don't need to encrypt it.
+- Next, Alice chooses a `secret key` without telling anyone. Bob does the same.
+- Alice encrypts the `common key` with *her* `secret key` to make `intermediate key A`. Bob encrypts the `common key` with *his* `secret key` to create `intermediate key B`.
+- Alice and Bob send each other these intermediate keys.
+- Alice encrypts `intermediate key B` with *her* `secret key`, Bob encrypts `intermediate key A` with *his* `secret key`.
+- Alice and Bob now both have an identical `common secret key` which is composed of Alice's `secret key`, Bob's `secret key` and the public `common key`.
+
+So that's the _idea_ behind the key exchange algorithm we'll be using, in order to put it into practice we still need to figure out how to do these things in an actual game.
 
 ## Doubling
 
