@@ -29,6 +29,14 @@ As it turns out, a batwurst sausage, when put in a cast iron pan for 10 minutes,
 
 With pet dogs and magical doubling sausages I believe it is possible to set up an in-game business which offers NPCs a secure messaging service with end to end encryption utilising Diffie-Hellman key exchange.
 
+## Background
+
+So, encryption. What are? Why for? How do?
+
+Encryption is a tool we use when communicating, at it's core it allows us to determine who is able to read a message and who isn't. There are some obvious applications for encryption like protecting credit card details when making purchases online, but it's also a great idea to use it for everyday communication. With access to sophisticated encryption algorithms and powerful smartphones many messaging applications offer us end to end encryption.
+
+Now in the world of pathfinder we won't have access to powerful computers, in fact we will have a complete lack of even moderate computational power. As such encrypting everyday communications between thousands of NPCs is probably not going to work, so instead we'll be focusing on encrypting infrequent and highly sensitive messages between powerful and/or wealthy characters. I think it's pretty reasonable to assume that there are some people who would jump at the chance to have their communications sent with the knowledge that only their intended recipient will be able to read them.
+
 ## Doubling
 
 ## Mersenne primes
