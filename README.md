@@ -37,13 +37,17 @@ Encryption is a tool we use when communicating, at it's core it allows us to det
 
 Now in the world of pathfinder we won't have access to powerful computers, in fact we will have a complete lack of even moderate computational power. As such encrypting everyday communications between thousands of NPCs is probably not going to work, so instead we'll be focusing on encrypting infrequent and highly sensitive messages between powerful and/or wealthy characters. I think it's pretty reasonable to assume that there are some people who would jump at the chance to have their communications sent with the knowledge that only their intended recipient will be able to read them.
 
+As for how encryption works, at it's most basic level you have a message known as the `plaintext` and an algorithm to encrypt it called the `cipher`. You apply the cipher to the plaintext to create the encrypted message called the `ciphertext`, you send the ciphertext to your recipient and they use another algorithm to decrypt it back into the plaintext. In order to stop anyone else from decrypting the ciphertext the cipher uses a secret `key` which the sender knows, the algorithm to decrypt the message requires the same key to work, essentially the sender and reciever have a shared secret which allows them to securely send messages to each other.
+
+## Key exchange
+
 ## Doubling
 
 ## Mersenne primes
 
-## Key exchange
-
 ## Dog tricks
+
+## Hashing
 
 ## Implementing division
 
