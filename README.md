@@ -54,7 +54,11 @@ It's easiest to explain this by using an example, classically using agents names
 - Alice encrypts `intermediate key B` with *her* `secret key`, Bob encrypts `intermediate key A` with *his* `secret key`.
 - Alice and Bob now both have an identical `common secret key` which is composed of Alice's `secret key`, Bob's `secret key` and the public `common key`.
 
-So that's the _idea_ behind the key exchange algorithm we'll be using, in order to put it into practice we still need to figure out how to do these things in an actual game.
+For more information on this, including the reason why the `common secret key` is the same for both Alice and Bob despite the fact that they both generated it in slightly different ways, check out the [Wikipedia Article](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) on the subject. The `General overview` section does a great job of explaining the intuition through an analogous paint mixing example, and the `Cryptographic explaination` section gives a worked example detailing the maths behind it.
+
+Without going into too much detail, in order to make everything work, we need a `modulus` p which we ideally want to be a large prime number as well as a `base` g which is a `primitive root modulo p`. These numbers p and g are used in the process of encrypting Alice and Bob's secret keys. The only mathematical operators required to do this are exponentiation and modulo.
+
+So that's the idea behind the key exchange algorithm we'll be using, in order to put it into practice we still need to figure out how to do these things in an actual game.
 
 ## Doubling
 
@@ -64,6 +68,6 @@ So that's the _idea_ behind the key exchange algorithm we'll be using, in order 
 
 ## Hashing
 
-## Implementing division
+## Implementing exponentiation
 
 ## Implementing modulo
